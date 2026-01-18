@@ -47,7 +47,7 @@ const education: EducationItem[] = [
     details: '95.6%',
     gradient: 'from-purple-500 to-pink-500',
     useCustomLogo: true,
-    logoUrl: 'http://prakashcbseschool.edu.in/wp-content/uploads/2014/09/prakash_logo.png'
+    logoUrl: 'https://prakashcbseschool.edu.in/wp-content/uploads/2014/09/prakash_logo.png'
   },
 ]
 
@@ -95,13 +95,26 @@ export default function Education() {
             <div className="flex justify-center mb-6">
               <div className={`w-20 h-20 bg-gradient-to-br ${edu.gradient} rounded-2xl flex items-center justify-center shadow-lg transform hover:rotate-6 transition-transform duration-300 relative overflow-hidden`}>
                 {edu.useCustomLogo && edu.logoUrl ? (
-                  <Image 
-                    src={edu.logoUrl} 
-                    alt={`${edu.institution} logo`}
-                    width={64}
-                    height={64}
-                    className="object-contain"
-                  />
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img 
+                      src={edu.logoUrl} 
+                      alt={`${edu.institution} logo`}
+                      className="w-16 h-16 object-contain"
+                      onError={(e) => {
+                        console.error(`Failed to load logo for ${edu.institution}:`, edu.logoUrl)
+                        // Fallback to default icon
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const fallback = target.parentElement?.querySelector('.fallback-icon')
+                        if (fallback) {
+                          (fallback as HTMLElement).style.display = 'block'
+                        }
+                      }}
+                    />
+                    <div className="fallback-icon hidden" style={{ color: edu.brandColor || '#8b5cf6' }}>
+                      <FaGraduationCap className="text-3xl" />
+                    </div>
+                  </div>
                 ) : edu.brandIcon ? (
                   <div style={{ color: edu.brandColor }}>
                     <edu.brandIcon className="text-3xl" />
