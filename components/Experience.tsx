@@ -10,6 +10,7 @@ interface ExperienceItem {
   period: string
   achievements: string[]
   color: string
+  logoUrl?: string
 }
 
 const experiences: ExperienceItem[] = [
@@ -19,6 +20,7 @@ const experiences: ExperienceItem[] = [
     location: 'Remote, India',
     period: 'March 2022 – Present',
     color: 'from-blue-500 to-cyan-500',
+    logoUrl: 'https://a.sfdcstatic.com/shared/images/c360-nav/salesforce-with-type-logo.svg',
     achievements: [
       'Designed and implemented integration of the External Client Apps framework in Mobile Publisher, achieving 99% reduction in operational costs while maintaining system reliability that includes the UI, back-end validations, data modeling, sandbox deployments, versioning.',
       'Developed full-stack Mobile Publisher Portal with Lightning and Aura components, scaling to 1000+ apps and improving monthly active users by 40% respecting Apple App Store and Google Play Store policies.',
@@ -33,6 +35,7 @@ const experiences: ExperienceItem[] = [
     location: 'Bangalore, India',
     period: 'January 2020 – February 2022',
     color: 'from-orange-500 to-yellow-500',
+    logoUrl: 'https://assets.aboutamazon.com/48/8c/1bc5933b414d82435b08581f742d/logo-1.svg',
     achievements: [
       'Surfaced the cost of risk evaluation for AWS systems (EC2, S3, SQS, SNS), reducing cloud spend by 14%.',
       'Orchestrated fleet segregation for multi-modal systems, optimizing transaction processing speed and reducing latency by 25% by automating environment provisioning workflow, reducing setup time from 14 days to 24 hours and increasing team efficiency.',
@@ -44,6 +47,7 @@ const experiences: ExperienceItem[] = [
     location: 'Bangalore, India',
     period: 'May 2019 – July 2019',
     color: 'from-purple-500 to-pink-500',
+    logoUrl: 'https://assets.aboutamazon.com/48/8c/1bc5933b414d82435b08581f742d/logo-1.svg',
     achievements: [
       'Built an automated integration test framework for the FORTRESS (Fraudulent order detection through risk evaluation at super-speed) fraud detection system, ensuring reliable coverage 80%+ for risk evaluation models.',
     ],
@@ -103,10 +107,30 @@ export default function Experience() {
                 <div className="card hover:scale-[1.02] transition-transform duration-300 ml-0 md:ml-20 relative group">
                   {/* Company icon */}
                   <div className={`absolute -left-14 top-6 w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl hidden md:flex group-hover:scale-110 transition-transform duration-300 border-2 border-gray-100 z-10`}>
-                    {exp.company === 'Salesforce' ? (
-                      <SiSalesforce className="text-3xl" style={{ color: '#00A1E0' }} />
+                    {exp.logoUrl ? (
+                      <img 
+                        src={exp.logoUrl} 
+                        alt={`${exp.company} logo`}
+                        className="w-12 h-12 object-contain"
+                        onError={(e) => {
+                          console.error(`Failed to load ${exp.company} logo:`, exp.logoUrl)
+                          // Fallback to React Icons
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                          const fallback = target.parentElement?.querySelector('.fallback-icon')
+                          if (fallback) {
+                            (fallback as HTMLElement).style.display = 'block'
+                          }
+                        }}
+                      />
                     ) : (
-                      <SiAmazonaws className="text-3xl" style={{ color: '#FF9900' }} />
+                      <div className="fallback-icon">
+                        {exp.company === 'Salesforce' ? (
+                          <SiSalesforce className="text-3xl" style={{ color: '#00A1E0' }} />
+                        ) : (
+                          <SiAmazonaws className="text-3xl" style={{ color: '#FF9900' }} />
+                        )}
+                      </div>
                     )}
                     <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-10 rounded-2xl`}></div>
                   </div>

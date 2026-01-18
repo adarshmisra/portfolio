@@ -23,6 +23,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'prakashcbseschool.edu.in',
       },
+      {
+        protocol: 'https',
+        hostname: 'a.sfdcstatic.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.aboutamazon.com',
+      },
     ],
   },
 }
