@@ -17,7 +17,7 @@ export default function Navbar() {
           setScrolled(window.scrollY > 20)
           
           // Determine active section
-          const sections = ['home', 'about', 'experience', 'education', 'skills', 'how-it-works', 'contact']
+          const sections = ['home', 'about', 'experience', 'education', 'skills', 'contact']
           const scrollPosition = window.scrollY + 150 // Offset for navbar
 
           for (let i = sections.length - 1; i >= 0; i--) {
@@ -45,7 +45,6 @@ export default function Navbar() {
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Education', href: '#education', id: 'education' },
     { label: 'Skills', href: '#skills', id: 'skills' },
-    { label: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ]
 
@@ -67,9 +66,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-lg'
+          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-professional-200'
           : 'bg-transparent'
       }`}
     >
@@ -77,7 +76,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <a
             href="#home"
-            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-indigo-700 transition-all duration-300"
+            className="text-2xl font-bold font-sans transition-all duration-300 text-slate-900 hover:text-blue-500"
           >
             Adarsh Misra
           </a>
@@ -91,16 +90,16 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`px-4 py-2 transition-all duration-300 font-medium rounded-lg relative group ${
+                  className={`px-4 py-2 transition-all duration-300 font-medium rounded-lg relative ${
                     isActive
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                      ? 'text-accent-blue-500 bg-accent-blue-50'
+                      : 'text-professional-600 hover:text-accent-blue-500 hover:bg-professional-100'
                   }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    className={`absolute bottom-0 left-0 h-0.5 bg-accent-blue-500 transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 hover:w-full'
                     }`}
                   ></span>
                 </a>
@@ -110,7 +109,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 hover:text-blue-600 transition-colors p-2"
+            className="md:hidden text-professional-600 hover:text-accent-blue-500 transition-colors p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -121,7 +120,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white/95 backdrop-blur-md border-t transition-all duration-300 ${
+        className={`md:hidden bg-white/95 backdrop-blur-md border-t border-professional-200 transition-all duration-300 ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
@@ -138,8 +137,8 @@ export default function Navbar() {
                 }}
                 className={`block px-4 py-3 transition-all duration-300 font-medium rounded-lg ${
                   isActive
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                    ? 'text-accent-blue-500 bg-accent-blue-50'
+                    : 'text-professional-600 hover:text-accent-blue-500 hover:bg-professional-100'
                 }`}
               >
                 {item.label}

@@ -1,6 +1,6 @@
 'use client'
 
-import { FaLinkedin, FaEnvelope, FaPhone, FaArrowDown } from 'react-icons/fa'
+import { FaLinkedin, FaEnvelope, FaPhone, FaArrowDown, FaCode, FaServer, FaDatabase, FaCloud } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -35,10 +35,12 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden scroll-mt-20">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.1),transparent_50%)]"></div>
+      {/* Clean background with subtle pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="absolute inset-0 subtle-pattern opacity-30"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-100 rounded-full opacity-20 blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-violet-100 rounded-full opacity-20 blur-xl"></div>
+        <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-emerald-100 rounded-full opacity-20 blur-xl"></div>
       </div>
 
       <div className="section-container text-center relative z-10">
@@ -46,7 +48,7 @@ export default function Hero() {
           {/* Profile Picture */}
           <div className="mb-8 flex justify-center animate-fade-in-up">
             {profileImage ? (
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden ring-4 ring-white shadow-2xl hover:scale-105 transition-transform duration-300">
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden ring-4 ring-white shadow-xl hover:scale-105 transition-all duration-300 hover-lift">
                 <Image
                   src={profileImage}
                   alt="Adarsh Misra"
@@ -60,12 +62,12 @@ export default function Hero() {
                   }}
                 />
                 {imageLoading && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-indigo-200 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 animate-pulse"></div>
                 )}
               </div>
             ) : (
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden ring-4 ring-white shadow-2xl bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-6xl sm:text-7xl font-bold text-white">
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden ring-4 ring-white shadow-xl bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center hover-lift hover:scale-105 transition-all duration-300">
+                <span className="text-5xl sm:text-6xl font-bold text-white">
                   {isVisible ? 'AM' : ''}
                 </span>
               </div>
@@ -73,23 +75,35 @@ export default function Hero() {
           </div>
 
           <div className="mb-6 animate-float">
-            <div className="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg border border-blue-200/50">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md border border-slate-200">
+              <FaCode className="icon-accent text-lg" />
               <span className="text-sm font-semibold gradient-text">Welcome to my Portfolio</span>
             </div>
           </div>
           
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-sans mb-6 text-slate-900 leading-tight">
             Adarsh Misra
           </h1>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 gradient-text">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8 gradient-text font-sans">
             Senior Software Engineer
           </h2>
           
-          <p className="text-xl sm:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto font-medium">
-            Backend & Full-Stack Development
-          </p>
-          <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-lg">
+              <FaServer className="icon-accent" />
+              <span className="text-sm font-medium text-slate-700">Backend Development</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-violet-50 rounded-lg">
+              <FaDatabase className="icon-violet" />
+              <span className="text-sm font-medium text-slate-700">Database Design</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-lg">
+              <FaCloud className="icon-success" />
+              <span className="text-sm font-medium text-slate-700">Cloud Architecture</span>
+            </div>
+          </div>
+          <p className="text-lg sm:text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
             5.5+ Years of Experience | Designing scalable backend services, APIs, and distributed systems
           </p>
           
@@ -132,9 +146,9 @@ export default function Hero() {
                 })
               }
             }}
-            className="inline-flex flex-col items-center text-gray-600 hover:text-blue-600 transition-colors animate-bounce cursor-pointer"
+            className="inline-flex flex-col items-center text-slate-600 hover:text-blue-500 transition-all duration-300 animate-bounce cursor-pointer"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
+            <span className="text-sm mb-2 font-medium">Scroll to explore</span>
             <FaArrowDown size={20} />
           </a>
         </div>

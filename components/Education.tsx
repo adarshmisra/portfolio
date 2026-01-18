@@ -1,7 +1,9 @@
 'use client'
 
-import { FaGraduationCap } from 'react-icons/fa'
+import { FaGraduationCap, FaSchool } from 'react-icons/fa'
+import { SiGoogle } from 'react-icons/si'
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
 interface EducationItem {
   degree: string
@@ -10,6 +12,10 @@ interface EducationItem {
   period: string
   details: string
   gradient: string
+  brandIcon?: React.ComponentType<{ className?: string }>
+  brandColor?: string
+  useCustomLogo?: boolean
+  logoUrl?: string
 }
 
 const education: EducationItem[] = [
@@ -20,6 +26,8 @@ const education: EducationItem[] = [
     period: '2023 – 2024',
     details: 'CGPA: 8.21',
     gradient: 'from-blue-500 to-cyan-500',
+    useCustomLogo: true,
+    logoUrl: 'https://www.bits-pilani.ac.in/wp-content/uploads/bits-pillani-2-1.webp'
   },
   {
     degree: 'B.Tech – ICT',
@@ -28,6 +36,8 @@ const education: EducationItem[] = [
     period: '2016 – 2020',
     details: 'CGPA: 8.17',
     gradient: 'from-indigo-500 to-purple-500',
+    useCustomLogo: true,
+    logoUrl: 'https://www.daiict.ac.in/themes/daiict/images/daiict-logo.jpg'
   },
   {
     degree: 'CBSE Class 12',
@@ -36,6 +46,8 @@ const education: EducationItem[] = [
     period: '2015 – 2016',
     details: '95.6%',
     gradient: 'from-purple-500 to-pink-500',
+    useCustomLogo: true,
+    logoUrl: 'http://prakashcbseschool.edu.in/wp-content/uploads/2014/09/prakash_logo.png'
   },
 ]
 
@@ -81,8 +93,23 @@ export default function Education() {
             style={{ transitionDelay: `${index * 150}ms` }}
           >
             <div className="flex justify-center mb-6">
-              <div className={`w-20 h-20 bg-gradient-to-br ${edu.gradient} rounded-2xl flex items-center justify-center shadow-lg transform hover:rotate-6 transition-transform duration-300`}>
-                <FaGraduationCap className="text-white text-3xl" />
+              <div className={`w-20 h-20 bg-gradient-to-br ${edu.gradient} rounded-2xl flex items-center justify-center shadow-lg transform hover:rotate-6 transition-transform duration-300 relative overflow-hidden`}>
+                {edu.useCustomLogo && edu.logoUrl ? (
+                  <Image 
+                    src={edu.logoUrl} 
+                    alt={`${edu.institution} logo`}
+                    width={64}
+                    height={64}
+                    className="object-contain"
+                  />
+                ) : edu.brandIcon ? (
+                  <div style={{ color: edu.brandColor }}>
+                    <edu.brandIcon className="text-3xl" />
+                  </div>
+                ) : (
+                  <FaGraduationCap className="text-white text-3xl" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
               </div>
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">{edu.degree}</h3>

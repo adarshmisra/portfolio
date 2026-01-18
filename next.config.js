@@ -11,6 +11,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.licdn.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.daiict.ac.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.bits-pilani.ac.in',
+      },
+      {
+        protocol: 'http',
+        hostname: 'prakashcbseschool.edu.in',
+      },
     ],
   },
 }

@@ -1,4 +1,4 @@
-import { FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
+import { FaLinkedin, FaEnvelope, FaHeart, FaRobot, FaBrain } from 'react-icons/fa'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -12,8 +12,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="flex items-center space-x-2 text-lg">
             <span>Made with</span>
+            <FaBrain className="text-purple-400 animate-pulse" />
+            <span>Gen AI</span>
             <FaHeart className="text-red-500 animate-pulse" />
             <span>by Adarsh Misra</span>
+            <div className="ml-4 px-3 py-1 bg-purple-500/20 border border-purple-400/30 rounded-full">
+              <span className="text-xs font-semibold text-purple-300">AI-Powered</span>
+            </div>
           </div>
           <div className="flex items-center space-x-6">
             <a

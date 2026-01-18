@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { FaServer, FaCode, FaCloud, FaFlask, FaRocket, FaJava } from 'react-icons/fa'
-import { SiJavascript, SiHtml5, SiCss3, SiJenkins, SiAmazonaws } from 'react-icons/si'
+import { SiJavascript, SiHtml5, SiCss3, SiJenkins, SiAmazonaws, SiSalesforce, SiLightning, SiApachemaven, SiGit, SiGithub, SiVisualstudiocode, SiIntellijidea } from 'react-icons/si'
 import { MdCloudQueue, MdSpeed, MdSecurity } from 'react-icons/md'
 
 interface Skill {
@@ -25,7 +25,8 @@ const skillCategories: SkillCategory[] = [
       'REST APIs',
       'Monoliths',
       'Microservices',
-      'SOA'
+      'SOA',
+      { name: 'Maven', icon: SiApachemaven }
     ],
     icon: FaServer,
     gradient: 'from-blue-500 to-cyan-500',
@@ -33,8 +34,8 @@ const skillCategories: SkillCategory[] = [
   {
     category: 'Frontend',
     skills: [
-      'Salesforce LWC',
-      'Aura',
+      { name: 'Salesforce LWC', icon: SiLightning },
+      { name: 'Aura', icon: SiSalesforce },
       { name: 'HTML', icon: SiHtml5 },
       { name: 'CSS', icon: SiCss3 },
       { name: 'JavaScript', icon: SiJavascript }
@@ -45,7 +46,14 @@ const skillCategories: SkillCategory[] = [
   {
     category: 'Cloud',
     skills: [
-      { name: 'AWS (EC2, S3, Lambda, SQS, SNS, VPC, DNS)', icon: SiAmazonaws }
+      { name: 'AWS', icon: SiAmazonaws },
+      'EC2',
+      'S3',
+      'Lambda',
+      'SQS',
+      'SNS',
+      'VPC',
+      'DNS'
     ],
     icon: FaCloud,
     gradient: 'from-orange-500 to-yellow-500',
@@ -61,12 +69,15 @@ const skillCategories: SkillCategory[] = [
     gradient: 'from-green-500 to-emerald-500',
   },
   {
-    category: 'Practices',
+    category: 'Tools & Practices',
     skills: [
       'Agile',
       'Scrum',
-      'Git',
+      { name: 'Git', icon: SiGit },
+      { name: 'GitHub', icon: SiGithub },
       'Code Reviews',
+      { name: 'VS Code', icon: SiVisualstudiocode },
+      { name: 'IntelliJ', icon: SiIntellijidea },
       'Claude',
       'Cursor',
       'Copilot and other Gen AI tools'
