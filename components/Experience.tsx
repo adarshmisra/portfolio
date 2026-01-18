@@ -100,9 +100,9 @@ export default function Experience() {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="card hover:scale-[1.02] transition-transform duration-300 ml-0 md:ml-16 relative group">
+                <div className="card hover:scale-[1.02] transition-transform duration-300 ml-0 md:ml-20 relative group">
                   {/* Company icon */}
-                  <div className={`absolute -left-12 top-6 w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl hidden md:flex group-hover:scale-110 transition-transform duration-300 border-2 border-gray-100`}>
+                  <div className={`absolute -left-14 top-6 w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl hidden md:flex group-hover:scale-110 transition-transform duration-300 border-2 border-gray-100 z-10`}>
                     {exp.company === 'Salesforce' ? (
                       <SiSalesforce className="text-3xl" style={{ color: '#00A1E0' }} />
                     ) : (
@@ -111,7 +111,7 @@ export default function Experience() {
                     <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-10 rounded-2xl`}></div>
                   </div>
                   
-                  <div className="mb-6">
+                  <div className="mb-6 pl-0 md:pl-8">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                         {exp.title}
