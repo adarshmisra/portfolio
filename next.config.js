@@ -20,7 +20,7 @@ const nextConfig = {
         hostname: 'www.bits-pilani.ac.in',
       },
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: 'prakashcbseschool.edu.in',
       },
     ],
