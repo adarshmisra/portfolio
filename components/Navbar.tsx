@@ -17,7 +17,7 @@ export default function Navbar() {
           setScrolled(window.scrollY > 20)
           
           // Determine active section
-          const sections = ['home', 'about', 'experience', 'education', 'skills', 'contact']
+          const sections = ['home', 'about', 'experience', 'education', 'skills', 'how-it-works', 'contact']
           const scrollPosition = window.scrollY + 150 // Offset for navbar
 
           for (let i = sections.length - 1; i >= 0; i--) {
@@ -45,6 +45,7 @@ export default function Navbar() {
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Education', href: '#education', id: 'education' },
     { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ]
 
