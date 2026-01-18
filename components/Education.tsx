@@ -50,7 +50,7 @@ export default function Education() {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleItems((prev) => new Set([...prev, index]))
+            setVisibleItems((prev) => new Set(Array.from(prev).concat(index)))
           }
         },
         { threshold: 0.1 }

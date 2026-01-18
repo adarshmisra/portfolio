@@ -66,7 +66,7 @@ export default function Contact() {
       <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="card text-center mb-8">
           <p className="text-xl text-gray-700 leading-relaxed">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
         </div>
         
